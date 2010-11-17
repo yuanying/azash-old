@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.all
+    @comments = @entry.comments.paginate(:page => params[:page], :per_page => 40, :order => 'created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,6 +44,9 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @comment = Comment.new(params[:comment])
+    @comment.ipaddress  = request.remote_ip
+    @comment.referrer   = request.env['HTTP_REFERER']
+    @comment.user_agent = request.env['HTTP_USER_AGENT']
 
     respond_to do |format|
       if @comment.save

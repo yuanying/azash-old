@@ -4,12 +4,16 @@ class CreateComments < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :url
-      t.text :body_text
+      t.text :content
+      t.string :ip_address
+      t.string :user_agent
+      t.string :referrer
+      
       t.references :entry
 
       t.timestamps
     end
-    add_index :comments, [:entry_id, :updated_at]
+    add_index :comments, [:entry_id, :created_at]
     add_index :comments, :entry_id
   end
 
