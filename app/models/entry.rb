@@ -1,3 +1,6 @@
+require 'uri'
+require 'net/http'
+
 class Entry < ActiveRecord::Base
   belongs_to :site
   has_many :comments, :dependent=>:destroy
@@ -9,7 +12,14 @@ class Entry < ActiveRecord::Base
   end
   
   def exist_page?
-    true
+    uri = URI.parse(self.url)
+    Net::HTTP.version_1_2
+    Net::HTTP.start(uri.host, uri.port) do |http|
+      temp = uri.path
+      temp += ( '?' + uri.query ) if uri.query
+      response = http.head(temp)
+      return response.code.to_i < 400
+    end
   end
   
   def akismet

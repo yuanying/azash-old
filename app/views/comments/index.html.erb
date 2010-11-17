@@ -1,4 +1,10 @@
-<h1>Listing comments</h1>
+
+<div class='comments'>
+  <% @comments.each do |comment| %>
+  <%= render :partial => 'comment', :locals => { :comment => comment } %>
+  <% end %>
+</div>
+
 
 <table>
   <tr>
@@ -26,6 +32,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Comment', new_comment_path %>

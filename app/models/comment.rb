@@ -1,6 +1,14 @@
 class Comment < ActiveRecord::Base
   belongs_to :entry
   
+  def formatted_content
+    unless @formatted_content
+      @formatted_content = self.html_escape(self.content)
+      @formatted_content = @formatted_content.gsub(/\n/, '<br />')
+    end
+    @formatted_content
+  end
+  
   def validate
     akismet = self.entry.akismet
     if akismet && akismet.verified?
@@ -18,5 +26,12 @@ class Comment < ActiveRecord::Base
         errors.add(:content, t('activerecord.errors.messages.is_spam'))
       end
     end
+  end
+  
+  protected
+  HTML_ESCAPE = { '&' => '&amp;', '>' => '&gt;', '<' => '&lt;', '"' => '"' }
+  def html_escape(s)
+    s = s.to_s
+    s.gsub(/[&"><]/) { |special| HTML_ESCAPE[special] }
   end
 end

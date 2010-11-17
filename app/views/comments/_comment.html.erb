@@ -1,0 +1,10 @@
+<div class='comment' id='azash_comment_<%=comment.id%>'>
+  <div class='content'>
+    <%=raw comment.formatted_content %>
+  </div>
+  <div>
+    <span class='name'><%= comment.name%></span>
+    <span class='at'>at</span>
+    <time class='date'><%= comment.created_at.strftime() %></time>
+  </div>
+</div>

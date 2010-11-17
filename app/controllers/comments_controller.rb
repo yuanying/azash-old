@@ -35,11 +35,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/1/edit
-  def edit
-    @comment = Comment.find(params[:id])
-  end
-
   # POST /comments
   # POST /comments.xml
   def create
@@ -54,22 +49,6 @@ class CommentsController < ApplicationController
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /comments/1
-  # PUT /comments/1.xml
-  def update
-    @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
@@ -99,11 +78,11 @@ class CommentsController < ApplicationController
       @entry      = Entry.new
       @entry.site = @site
       @entry.path = path
-      if @entry.exist_page?
-        @entry.save!
-      else
-        throw ActiveRecord::RecordNotFound
-      end
+    end
+    if @entry.valid? && @entry.exist_page?
+      @entry.save! if @entry.new_record?
+    else
+      raise ActiveRecord::RecordNotFound
     end
   end
   
