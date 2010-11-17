@@ -1,0 +1,10 @@
+Gemfile.lock
+ERD.pdf
+.DS_Store
+schema.rb
+database.yml
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+

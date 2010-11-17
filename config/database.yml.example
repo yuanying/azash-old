@@ -1,0 +1,18 @@
+login: &login
+  adapter: mysql2
+  host: localhost
+  user: yuanying
+  password: 
+  encoding: utf8  
+
+development:
+  database: azash_dev
+  <<: *login
+
+test:
+  database: azash_tests
+  <<: *login
+
+production:
+  database: azash
+  <<: *login

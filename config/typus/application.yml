@@ -1,0 +1,34 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Comment:
+  fields:
+    default: name, email, url, entry_id, entry
+    form: name, email, url, body_text, entry_id, entry
+  order_by: 
+  relationships: entry
+  filters: 
+  search: name
+  application: azash
+
+Entry:
+  fields:
+    default: path, site_id, site
+    form: path, site_id, site
+  order_by: 
+  relationships: comments, site
+  filters: 
+  search: 
+  application: azash
+
+Site:
+  fields:
+    default: url, style_sheet_url
+    form: url, style_sheet_url
+  order_by: 
+  relationships: entries
+  filters: 
+  search: 
+  application: azash
+

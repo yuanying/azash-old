@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Azash -- Comment System</title>
+  <% if @site.style_sheet_url.nil? || @site.style_sheet_url.empty? %>
+  <%= stylesheet_link_tag :all %>
+  <% else %>
+  <link rel="stylesheet" href="<%= @site.style_sheet_url %>" type="text/css" media="screen" />
+  <% end %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
