@@ -2,6 +2,8 @@ class Entry < ActiveRecord::Base
   belongs_to :site
   has_many :comments, :dependent=>:destroy
   
+  validates_format_of :path, :with => /^(\/[\-.!~*'();\/?:@&=+$,%#\w]*)$/
+  
   def url
     self.site.url + self.path
   end
