@@ -167,5 +167,8 @@ ja:
       entry:
         path: 'パス'
       comment:
+        name: '名前'
+        email: 'メール'
+        url: 'URL'
         content: '内容'
         

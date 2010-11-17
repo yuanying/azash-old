@@ -2,3 +2,6 @@ ja:
   layouts:
     application:
       description: 'コメント管理システム'
+  comments:
+    index:
+      origin: 'コメント元'
