@@ -1,6 +1,11 @@
 class Comment < ActiveRecord::Base
   belongs_to :entry
   
+  validates_length_of :name, :within => 1..32
+  validates_length_of :content, :within => 1..1024
+  validates_length_of :email, :within => 0..250
+  validates_length_of :url, :within => 0..250
+  
   def formatted_content
     unless @formatted_content
       @formatted_content = self.html_escape(self.content)

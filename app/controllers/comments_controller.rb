@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  unless Rails.env == 'production'
+    before_filter :set_access_control_allow_origin
+  end
   before_filter :load_site
   before_filter :load_entry
   
@@ -39,7 +42,8 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @comment = Comment.new(params[:comment])
-    @comment.ipaddress  = request.remote_ip
+    @comment.entry      = @entry
+    @comment.ip_address = request.remote_ip
     @comment.referrer   = request.env['HTTP_REFERER']
     @comment.user_agent = request.env['HTTP_USER_AGENT']
 
@@ -84,6 +88,10 @@ class CommentsController < ApplicationController
     else
       raise ActiveRecord::RecordNotFound
     end
+  end
+  
+  def set_access_control_allow_origin
+    response.headers['Access-Control-Allow-Origin'] = '*'
   end
   
 end

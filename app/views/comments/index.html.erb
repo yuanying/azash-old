@@ -1,8 +1,13 @@
 
-<div class='comments'>
+<div id='azash_comments'>
   <% @comments.each do |comment| %>
   <%= render :partial => 'comment', :locals => { :comment => comment } %>
   <% end %>
 </div>
 
-<div class='origin'><a href='<%= @entry.url %>'><%=t '.origin' %></a></div>
+<div id='azash_comment_origin'><a href='<%= @entry.url %>'><%=t '.origin' %></a></div>
+
+<div id='azash_comment_form'>
+  <% @comment = Comment.new %>
+  <%= render 'form' %>
+</div>

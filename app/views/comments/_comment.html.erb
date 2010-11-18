@@ -2,9 +2,9 @@
   <div class='content'>
     <%=raw comment.formatted_content %>
   </div>
-  <div>
+  <div class='posted'>
     <span class='name'><%= comment.name%></span>
     <span class='at'>at</span>
-    <time class='date'><%= comment.created_at.strftime() %></time>
+    <time class='date'><%= comment.created_at %></time>
   </div>
 </div>
