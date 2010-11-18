@@ -17,7 +17,7 @@ class Akismet
   @@valid_responses  = Set.new(['false', ''])
   @@normal_responses = @@valid_responses.dup << 'true'
   STANDARD_HEADERS = {
-    'User-Agent'   => 'RanaPrunus/' << Aphrael::Version::STRING,
+    'User-Agent'   => 'Azash/0.1',
     'Content-Type' => 'application/x-www-form-urlencoded'
   }
   
