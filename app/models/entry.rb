@@ -1,5 +1,6 @@
 require 'uri'
 require 'net/http'
+require 'akismet'
 
 class Entry < ActiveRecord::Base
   belongs_to :site
@@ -34,7 +35,7 @@ class Entry < ActiveRecord::Base
       end
 
       if akismet_api_key
-        @akismet = Akismet.new(akismet_api_key, self.site.url)
+        @akismet = ::Akismet.new(akismet_api_key, self.site.url)
       end
     end
     @akismet
