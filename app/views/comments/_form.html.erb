@@ -1,4 +1,4 @@
-<%= form_for(@comment, :url => comments_path(:site_id => params[:site_id], :path => params[:path] ) ) do |f| %>
+<%= form_for(@comment, :url => comments_url(:site_id => params[:site_id], :path => params[:path] ) ) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field required">
     <div class='property_name'><%= f.label :name %></div>
     <div class='property_value'><%= f.text_field :name %></div>
   </div>
@@ -23,7 +23,7 @@
     <div class='property_name'><%= f.label :url %></div>
     <div class='property_value'><%= f.text_field :url %></div>
   </div>
-  <div class="field">
+  <div class="field required">
     <div class='property_name'><%= f.label :content %></div>
     <div class='property_value'><%= f.text_area :content %></div>
   </div>
