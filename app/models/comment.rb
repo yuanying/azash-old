@@ -28,7 +28,8 @@ class Comment < ActiveRecord::Base
         :comment_author_url => self.url,
         :comment_content => self.content
       )
-        errors.add(:content, t('activerecord.errors.messages.is_spam'))
+        # errors.add(:content, t('activerecord.errors.messages.is_spam'))
+        errors.add(:content, 'is spam.')
       end
     end
   end
