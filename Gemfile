@@ -4,6 +4,7 @@ gem 'rails', '3.0.0'
 gem 'mysql2'
 gem 'typus', :git => 'https://github.com/fesplugas/typus.git'
 gem 'jquery-rails'
+gem 'nokogiri'
 gem "factory_girl_rails", :require => nil 
 
 group :test, :development do

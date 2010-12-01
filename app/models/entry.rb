@@ -1,5 +1,6 @@
 require 'uri'
 require 'net/http'
+require 'nokogiri'
 require 'akismet'
 
 class Entry < ActiveRecord::Base
@@ -18,9 +19,13 @@ class Entry < ActiveRecord::Base
     Net::HTTP.start(uri.host, uri.port) do |http|
       temp = uri.path
       temp += ( '?' + uri.query ) if uri.query
-      response = http.head(temp)
-      return response.code.to_i < 400
+      response = http.get(temp)
+      if response.code.to_i < 300
+        self.title = Nokogiri::HTML.parse(response.body).search('title').text()
+        return true
+      end
     end
+    return false
   end
   
   def akismet

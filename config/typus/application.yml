@@ -14,8 +14,8 @@ Comment:
 
 Entry:
   fields:
-    default: path, site_id, site
-    form: path, site_id, site
+    default: title, path, site_id, site
+    form: title, path, site_id, site
   order_by: 
   relationships: comments, site
   filters: 
