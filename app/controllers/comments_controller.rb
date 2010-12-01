@@ -84,7 +84,7 @@ class CommentsController < ApplicationController
       @entry.path = path
     end
     if @entry.valid? && @entry.exist_page?
-      @entry.save! if @entry.new_record?
+      @entry.save! #if @entry.new_record?
     else
       raise ActiveRecord::RecordNotFound
     end
