@@ -6,7 +6,7 @@ entry_comments = ActiveSupport::OrderedHash.new
 end
 %>
 
-<dl class='azash_entry_comments'>
+<dl id='azash_recent_entry_comments'>
 <% entry_comments.each do |entry, comments| %>
   <dt><a href='<%=entry.url%>#comments'><%= entry.title %></a></dt>
   <% comments.each do |comment| %>
