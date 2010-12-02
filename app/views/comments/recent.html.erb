@@ -1,0 +1,20 @@
+<%
+entry_comments = ActiveSupport::OrderedHash.new
+@comments.each do |comment|
+  entry_comments[comment.entry] ||= []
+  entry_comments[comment.entry] << comment
+end
+%>
+
+<dl class='azash_entry_comments'>
+<% entry_comments.each do |entry, comments| %>
+  <dt><a href='<%=entry.url%>#comments'><%= entry.title %></a></dt>
+  <% comments.each do |comment| %>
+  <dd>
+    <span class='name'><%= comment.name%></span>
+    <span class='at'>at</span>
+    <time class='date'><%= comment.created_at %></time>
+  </dd>
+  <% end %>
+<% end %>
+</dl>

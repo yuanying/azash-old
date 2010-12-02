@@ -3,13 +3,26 @@ class CommentsController < ApplicationController
     before_filter :set_access_control_allow_origin
   end
   before_filter :load_site
-  before_filter :load_entry
+  before_filter :load_entry, :except => :recent
   
   # GET /comments
   # GET /comments.xml
   def index
     @comments = @entry.comments.paginate(:page => params[:page], :per_page => 40, :order => 'created_at DESC')
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @comments }
+    end
+  end
+  
+  def recent
+    @comments = Comment.find( :all,
+                              :limit      => 10,
+                              :include    => [:entry => :site],
+                              :conditions => ['entries.site_id = ?', @site.id],
+                              :order      => 'comments.created_at desc'
+    )
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @comments }
