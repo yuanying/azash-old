@@ -1,3 +1,4 @@
+akismet_api_key.txt
 Gemfile.lock
 ERD.pdf
 .DS_Store
@@ -7,4 +8,5 @@ database.yml
 db/*.sqlite3
 log/*.log
 tmp/**/*
+tmp/restart.txt
 

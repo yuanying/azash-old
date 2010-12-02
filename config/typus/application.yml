@@ -4,9 +4,9 @@
 
 Comment:
   fields:
-    default: name, email, url, ip_address, user_agent, referrer, entry_id, entry
+    default: name, email, url, ip_address, user_agent, referrer, entry
     form: name, email, url, content, ip_address, user_agent, referrer, entry_id, entry
-  order_by: 
+  order_by: -created_at
   relationships: entry
   filters: 
   search: name
@@ -14,9 +14,9 @@ Comment:
 
 Entry:
   fields:
-    default: title, path, site_id, site
+    default: title
     form: title, path, site_id, site
-  order_by: 
+  order_by: -updated_at 
   relationships: comments, site
   filters: 
   search: 
