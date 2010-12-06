@@ -15,6 +15,7 @@ end
     <span class='name'><a rel='nofollow' href="<%= comment.url %>"><%= comment.name%></a></span>
     <%- else -%>
     <span class='name'><%= comment.name%></span>
+    <%- end -%>
     <span class='at'>at</span>
     <time class='date'><%= comment.created_at %></time>
   </dd>
