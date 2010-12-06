@@ -11,7 +11,7 @@ end
   <dt><a href='<%=entry.url%>#comments'><%= entry.title %></a></dt>
   <% comments.each do |comment| %>
   <dd>
-    <%- unless comment.url.nil? && comment.url.empty? -%>
+    <%- unless comment.url.nil? || comment.url.empty? -%>
     <span class='name'><a rel='nofollow' href="<%= comment.url %>"><%= comment.name%></a></span>
     <%- else -%>
     <span class='name'><%= comment.name%></span>
