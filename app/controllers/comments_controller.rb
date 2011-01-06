@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.entry      = @entry
     @comment.ip_address = request.remote_ip
-    # @comment.referrer   = request.env['HTTP_REFERER']
+    @comment.referrer   = params[:referrer] if params[:referrer]
     @comment.user_agent = request.env['HTTP_USER_AGENT']
 
     respond_to do |format|
