@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 gem 'mysql2'
-gem 'typus', '3.1.4'#, :git => 'https://github.com/fesplugas/typus.git'
+gem 'typus', '3.1.4'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem "factory_girl_rails", :require => nil 
@@ -12,7 +12,7 @@ gem 'coffee-script'
 gem 'uglifier'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.0.1"
+  gem "rspec-rails", "2.6.1"
 end
 
 # Bundle edge Rails instead:

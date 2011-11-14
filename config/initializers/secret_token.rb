@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Azash::Application.config.secret_token = 'd3b84c19fd43cede57876e4ce1f216ed5953f8edaf5b1ac325411caae6f4918763bddcd9d0c829300560d2df4b7e2985fcd6b30ed99ba17cef6f0a7a9871b3f2'
+Azash::Application.config.secret_token = '24c65764937509816e85e8779bf914c07fd8eed01d84172554b0340aa8d140f5b67cc5caa4a916d9d3c15b60e407b04cee93e41addc44b74bb099c666d3d436b'
