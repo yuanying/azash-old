@@ -1,11 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.1.1'
 gem 'mysql2'
-gem 'typus', :git => 'https://github.com/fesplugas/typus.git'
+gem 'typus', '3.1.4'#, :git => 'https://github.com/fesplugas/typus.git'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem "factory_girl_rails", :require => nil 
+
+gem 'sass'
+gem 'coffee-script'
+gem 'uglifier'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0.1"
