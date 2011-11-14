@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = @entry.comments.paginate(:page => params[:page], :per_page => 40, :order => 'created_at DESC')
+    @comments = @entry.comments.order('created_at DESC').page(params[:page]).per(40)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -5,6 +5,7 @@ gem 'mysql2'
 gem 'typus', '3.1.4'
 gem 'jquery-rails'
 gem 'nokogiri'
+gem 'kaminari'
 gem "factory_girl_rails", :require => nil 
 
 gem 'sass'
