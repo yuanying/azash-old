@@ -3,7 +3,7 @@
 <head>
   <title>Azash -- <%= t('.description') %></title>
   <% if @site.style_sheet_url.nil? || @site.style_sheet_url.empty? %>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag '/stylesheets/scaffold.css' %>
   <% else %>
   <link rel="stylesheet" href="<%= @site.style_sheet_url %>" type="text/css" media="screen" />
   <% end %>
