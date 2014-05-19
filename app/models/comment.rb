@@ -1,3 +1,5 @@
+require 'yaml'
+
 class Comment < ActiveRecord::Base
   belongs_to :entry
   
@@ -29,6 +31,13 @@ class Comment < ActiveRecord::Base
         :comment_content => self.content
       )
         # errors.add(:content, t('activerecord.errors.messages.is_spam'))
+        errors.add(:content, 'is spam.')
+      end
+    end
+
+    blacklist = YAML.load_file(Rails.root + "/config/blacklist.yml")
+    blacklist.each do |word|
+      if self.name.include?(word) || self.email.include?(word) || self.url.include?(word) || self.content.include?(word)
         errors.add(:content, 'is spam.')
       end
     end
