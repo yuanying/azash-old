@@ -8,6 +8,9 @@ class Comment < ActiveRecord::Base
   validates_length_of :email, :within => 0..250
   validates_length_of :url, :within => 0..250
   
+  validate :check_akismet
+  validate :check_blacklist
+
   def formatted_content
     unless @formatted_content
       @formatted_content = self.html_escape(self.content)
@@ -16,14 +19,16 @@ class Comment < ActiveRecord::Base
     @formatted_content
   end
   
-  def validate
+  def check_blacklist
     blacklist = YAML.load_file(Rails.root + "/config/blacklist.yml")
     blacklist.each do |word|
       if self.name.include?(word) || self.email.include?(word) || self.url.include?(word) || self.content.include?(word)
         errors.add(:content, 'is spam.')
       end
     end
+  end
 
+  def check_akismet
     akismet = self.entry.akismet
     if akismet && akismet.verified?
       if akismet.comment_check(
