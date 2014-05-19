@@ -4,7 +4,7 @@
 
 Comment:
   fields:
-    default: name, email, url, ip_address, user_agent, referrer, entry
+    default: name, email, ip_address, entry
     form: name, email, url, content, ip_address, user_agent, referrer, entry_id, entry
   order_by: -created_at
   relationships: entry
